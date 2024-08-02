@@ -1,0 +1,21 @@
+{
+  "name": "tagcloud3js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "three": "^0.167.1"
+  },
+  "devDependencies": {
+    "vite": "^5.3.5"
+  }
+}
