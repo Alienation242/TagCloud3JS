@@ -105,7 +105,7 @@ function onMouseClick(event) {
                 duration: 1
             });
 
-            sizeDisplay.innerText = `Size: ${clickedObject.userData.originalSize}`;
+            sizeDisplay.innerText = `Anzahl: ${clickedObject.userData.originalSize}`;
             sizeDisplay.style.display = 'block';
         }
     } else {

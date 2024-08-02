@@ -3,7 +3,6 @@ const originalTags = [
     { name: 'acat', size: 11 },
     { name: 'ada', size: 5 },
     { name: 'bhc', size: 15 },
-    { name: 'bhka', size: 2 },
     { name: 'fabs', size: 3 },
     { name: 'faust', size: 4 },
     { name: 'fr', size: 17 },
@@ -32,10 +31,13 @@ const originalTags = [
 const minSize = Math.min(...originalTags.map(tag => tag.size));
 const maxSize = Math.max(...originalTags.map(tag => tag.size));
 
+// Parameters to control the scaling range
+const minScale = 1.5;  // Smallest picture scale
+const maxScale = 8;  // Largest picture scale
+
 const normalizedTags = originalTags
-    .filter(tag => tag.size > 2) // Remove size 2 items
     .map(tag => {
-        const normalizedSize = 1 + ((tag.size - minSize) / (maxSize - minSize)) * (5 - 1);
+        const normalizedSize = minScale + ((tag.size - minSize) / (maxSize - minSize)) * (maxScale - minScale);
         return { url: `img/${tag.name}.png`, size: normalizedSize, originalSize: tag.size };
     });
 
