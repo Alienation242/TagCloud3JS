@@ -39,9 +39,11 @@ function createTagCloud(tags) {
             radius * Math.cos(phi)
         );
 
-        image.userData.size = tag.size; // Store the normalized size
-        image.userData.originalSize = tag.originalSize; // Store the original size
+        image.userData.size = tag.size;
+        image.userData.originalSize = tag.originalSize;
         scene.add(image);
+
+        // Lines are removed, so no need to create or add lines here
     });
 }
 
@@ -73,7 +75,7 @@ function onMouseClick(event) {
     if (intersects.length > 0) {
         const clickedObject = intersects[0].object;
 
-        if (selectedObject !== clickedObject) {
+        if (clickedObject instanceof THREE.Sprite && selectedObject !== clickedObject) {
             if (selectedObject) {
                 gsap.to(selectedObject.position, {
                     x: originalPosition.x,
@@ -95,7 +97,6 @@ function onMouseClick(event) {
                 duration: 1
             });
 
-            // Display the original size
             sizeDisplay.innerText = `Size: ${clickedObject.userData.originalSize}`;
             sizeDisplay.style.display = 'block';
         }
@@ -109,7 +110,6 @@ function onMouseClick(event) {
             });
             selectedObject = null;
 
-            // Hide the size display
             sizeDisplay.style.display = 'none';
         }
     }
